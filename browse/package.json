@@ -1,0 +1,17 @@
+{
+  "name": "dsh-ming-browse",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "助手的谷期：这个工作区闲够久时，自己在刷手机会话里醒一醒，只读地看看手机（点按被硬拦）",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "cordis.patch.yml"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

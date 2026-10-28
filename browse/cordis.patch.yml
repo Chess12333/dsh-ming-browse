@@ -1,0 +1,68 @@
+- insert:
+    - id: ming-browse
+      name: dsh-ming-browse
+      config:
+        enabled: true
+        workspacePath: process.env.MING_ROOT || ''
+        # 2026-10-23 用户改：自由窗口 = 每天 18:30–08:00，另加「节假日/双休日 13:50–18:15」。
+        # 2026-10-25：额度多了个临时开关 live/browse-unlimited.json（她说「不限量」就全放开，
+        #   默认每天早上 09:00 自己收）。dailyMax / minGapMinutes 仍是平时的底。
+        idleMinutes: 1
+        minGapMinutes: 30
+        dailyMax: 8
+        # 2026-10-25 她定的：每 15 轮换一个新会话（跑到 30 轮时后段每轮的上下文是前段的四倍）。
+        # 账本 live/browse-session.json，跑满就换 ming-browse-5、-6……
+        sessionRounds: 15
+        quietHours: '08:00-18:30'   # 兜底，有 freeWindows 时不用
+        freeWindows:
+          - { start: '18:30', end: '08:00' }
+          - { start: '13:50', end: '18:15', only: rest }
+        holidaysFile: 'live/holidays.json'
+        maxItems: 2
+        maxShots: 2
+        serial: '127.0.0.1:7555'
+        # 在正在使用的 QQ 会话里叫醒，不另开会话（用户 2026-10-20 定的）。
+        targetMode: self
+        qqSessionPrefix: onebot-
+        adbPath: 'adb'
+        # 用户 2026-10-20 原话：除了 B站，其它社交平台不许点赞/评论/关注，但没说不让浏览。
+        # 所以这里是一份「社交平台名单」：在前台是这些 App 时，点赞/评论/关注这类写操作被拒；
+        # 浏览、点开内容、别的 App（含游戏）不拦。
+        socialApps:
+          - com.xingin.xhs
+          - com.tencent.weibo
+          - com.sina.weibo
+          - com.ss.android.ugc.aweme
+          - com.smile.gifmaker
+          - com.zhihu.android
+          - com.baidu.tieba
+          - com.tencent.mm
+          - com.tencent.mobileqq
+        socialWriteWords:
+          - 点赞
+          - 关注
+          - 评论
+          - 收藏
+          - 转发
+          - 分享
+          - 发布
+          - 发送
+          - 投币
+          - 私信
+        tapTextDeny:
+          - 充电
+          - 大会员
+          - 购买
+          - 支付
+          - 充值
+          - 打赏
+          - 送礼
+          - 开通
+          - 续费
+          - 礼包
+          - 支付宝
+          - 微信支付
+          - 结算
+        targets:
+          - bilibili
+          - xiaohongshu

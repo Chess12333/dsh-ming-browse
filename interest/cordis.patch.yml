@@ -1,0 +1,23 @@
+- insert:
+    - id: ming-interest
+      name: dsh-ming-interest
+      config:
+        enabled: true
+        workspacePath: process.env.MING_ROOT || ''
+        # onebot 的入站录制（recordInbound: true）落在这里。
+        inboxPath: 'C:\Users\13588\.dsh\media\onebot\qq-inbox.jsonl'
+        chatSessionsPath: 'C:\Users\13588\.dsh\media\onebot\chat-sessions.json'
+        interestsFile: 'live\interests.json'
+        logFile: 'live\interest-log.jsonl'
+        stateFile: 'live\interest-state.json'
+        offFlag: 'live\interest-off'
+        pollMs: 20000
+        # 上限照谷期那套来，宁可少醒。
+        minGapMinutes: 20
+        maxPerHour: 3
+        quietHours: '01:00-08:00'
+        minChars: 6
+        contextLines: 4
+        # 只认她拉我进的这个群。
+        groups:
+          - '977293430'

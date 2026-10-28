@@ -1,0 +1,17 @@
+{
+  "name": "dsh-ming-interest",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "助手的兴趣唤醒：群里被 @ 门控丢掉的消息里，只有命中我也在乎的话题才把我叫醒",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "cordis.patch.yml"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
